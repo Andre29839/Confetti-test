@@ -1,0 +1,92 @@
+@import-normalize;
+
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+:root {
+  --main: #222222;
+  --extra-text: #565148;
+  --accent: #ed4b5e;
+  --accent-disabled: rgba(237, 75, 94, 0.75);
+  --extra-accent: #ffeff0;
+  --white: #ffffff;
+  --grey: #444444;
+  --light-grey: #808080;
+  --grey-form: #949494;
+  --border-form: #d2d2d2;
+  --color-text: #888888;
+  --bg-color: #fff7e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Anzeigen";
+  src: url("../assets/fonts/AnzeigenGroTOT.otf");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Medium.otf");
+}
+
+body {
+  margin: 0;
+  font-family: "Anzeigen", "Inter", Arial, Helvetica, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--main);
+  background-image: url(../assets/bg-mobile.png);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top center;
+  background-size: auto;
+}
+
+@media (min-width: 768px) {
+  body {
+    background-image: url(../assets/bg-tablet.png);
+    background-position-x: -100px;
+    background-position-y: -210px;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    background-image: url(../assets/bg-desktop.png);
+    background-position: top;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  background-color: inherit;
+}

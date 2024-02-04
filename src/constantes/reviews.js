@@ -1,0 +1,14 @@
+export const reviews = [
+  {
+    text: "Jeszcze raz wielkie dzięki! Ciężko nam było foty robić jak ustawili te stoły 🥰 ale sam klimat i dekoracja robiła meegaaa wrażenie!",
+    name: "Aleksandra Murawska",
+  },
+  {
+    text: "Baaardzo super ścianka, dziękuję za współpracę 🫶",
+    name: "Anetta Ostalczyk",
+  },
+  {
+    text: "Ścianka była piękna , bardzo delikatna , Jeszcze raz bardzo dziękuję  ) ",
+    name: "Katia Maksymiw",
+  },
+];

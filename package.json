@@ -1,0 +1,28 @@
+{
+  "name": "confetti",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "https://github.com/Andre29839/Confetti-test",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "formik": "^2.4.5",
+    "modern-normalize": "^2.0.0",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-scroll": "^1.9.0",
+    "react-slick": "^0.30.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.8",
+    "yup": "^1.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0"
+  }
+}
