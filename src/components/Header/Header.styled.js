@@ -1,6 +1,32 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
-export const HeaderContainer = styled.header`
+const fadeIn = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const HeaderMain = styled.header`
+  position: relative;
+  overflow: hidden;
+`;
+
+export const HeaderContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+
   margin: 0 auto;
   max-width: 480px;
   display: flex;
@@ -34,11 +60,20 @@ export const FixedContainer = styled.button`
   top: 33.5px;
   border: none;
   background: none;
-  z-index: 1;
   padding: 0;
+  outline: none;
+  z-index: 1;
+  ${(props) =>
+    props.$isOpen
+      ? css`
+          animation: ${fadeIn} 0.5s forwards;
+        `
+      : css`
+          animation: ${fadeOut} 0.5s forwards;
+        `};
 
   @media (min-width: 480px) {
-    right: calc(50% - 222px);
+    right: calc(50% - 220px);
   }
 
   @media (min-width: 768px) {
@@ -60,6 +95,7 @@ export const FixedContainer = styled.button`
 export const BurgenMenu = styled.div`
   fill: var(--main);
   stroke: var(--main);
+  transition: all 500ms ease-in-out;
 
   &:hover,
   &:focus {

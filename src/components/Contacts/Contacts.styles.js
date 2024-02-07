@@ -4,8 +4,18 @@ import Link from "next/link";
 export const ContactSectionMain = styled.section`
   overflow: hidden;
   position: relative;
+`;
+
+export const ContactContainer = styled.div`
+  max-width: 480px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
 
   @media (min-width: 1280px) {
+    max-width: 1440px;
     display: flex;
     justify-content: space-between;
     padding: 164px 147px 0 112px;
@@ -50,7 +60,7 @@ export const ContactSubTitle = styled.h3`
   font-size: 28px;
   font-weight: 400;
   align-items: center;
-  line-height: 0.8;
+  line-height: 1;
   letter-spacing: -0.1px;
   margin-bottom: 24px;
 
@@ -84,14 +94,18 @@ export const ContactContainerInformation = styled.div`
   justify-content: center;
   gap: 8px;
 
-  fill: var(--main);
   stroke: var(--main);
+  transition: all 500ms ease-in-out;
 
   &:hover,
   &:focus {
     color: var(--accent);
-    fill: var(--accent);
     stroke: var(--accent);
+  }
+
+  &:hover a,
+  &:focus a {
+    color: var(--accent);
   }
 `;
 
@@ -101,11 +115,7 @@ export const ContactContainerData = styled(Link)`
   font-weight: 400;
   font-family: "Inter";
   letter-spacing: -1px;
-
-  &:hover,
-  &:focus {
-    color: var(--accent);
-  }
+  transition: all 500ms ease-in-out;
 
   @media (min-width: 768px) {
     font-size: 24px;

@@ -1,6 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const AboutUsSection = styled.section`
+  position: relative;
+  overflow: hidden;
+`;
+
+export const AboutUsContainer = styled.div`
   padding: 0 20px 80px;
   max-width: 480px;
   margin: 0 auto;
@@ -18,6 +23,7 @@ export const AboutUsSection = styled.section`
 
   @media (min-width: 768px) {
     max-width: 768px;
+    padding: 0 30px 80px;
   }
 
   @media (min-width: 1280px) {
@@ -64,7 +70,7 @@ export const AboutText = styled.p`
   }
 `;
 
-export const CardGrid = styled.div`
+export const CardGrid = styled.ul`
   @media (min-width: 1280px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -75,13 +81,16 @@ export const CardGrid = styled.div`
   }
 `;
 
-export const AboutCard = styled.div`
+export const AboutCard = styled.li`
   background: ${(props) => props.color};
   color: var(--white);
   padding: 24px;
   border-radius: 24px;
   margin-bottom: 24px;
   height: 253px;
+  margin-left: 10px;
+  margin-right: 10px;
+  outline: none;
 
   @media (min-width: 768px) {
     padding: 48px;
@@ -102,6 +111,8 @@ export const AboutSubTitle = styled.h3`
   font-size: 24px;
   width: 200px;
   text-transform: uppercase;
+  line-height: 1;
+
   &.last {
     width: 180px;
   }
@@ -109,6 +120,8 @@ export const AboutSubTitle = styled.h3`
   @media (min-width: 768px) {
     font-size: 40px;
     width: 350px;
+    margin-bottom: 40px;
+
     &.last {
       width: 300px;
     }

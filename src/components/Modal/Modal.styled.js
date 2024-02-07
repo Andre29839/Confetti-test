@@ -26,12 +26,8 @@ export const ModalHeader = styled.div`
   }
 
   @media (min-width: 1280px) {
-    max-width: 1280px;
-    padding: 37px 112px 0;
-  }
-
-  @media (min-width: 1440px) {
     max-width: 1440px;
+    padding: 37px 112px 0;
   }
 `;
 
@@ -41,7 +37,7 @@ export const ModalTitle = styled.h2`
   text-transform: uppercase;
   height: 32px;
   font-weight: 400;
-  cursor: context-menu;
+  cursor: pointer;
 `;
 
 export const ModalList = styled.ul`

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import {
   AboutCard,
   AboutSubText,
@@ -16,3 +18,11 @@ export const AboutUsCard = ({ title, text, color, index, total }) => (
     </AboutSubText>
   </AboutCard>
 );
+
+AboutUsCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+};

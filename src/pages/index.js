@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { ToastContainer } from "react-toastify";
 
 import { Header } from "@/components/Header/Header";
 import { Hero } from "@/components/Hero/Hero";
@@ -16,14 +17,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ToastContainer />
+      <Header />
       <main>
-        <Header />
         <Hero />
         <AboutUs />
         <Reviews />
         <Contacts />
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }

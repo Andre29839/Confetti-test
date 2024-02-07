@@ -1,0 +1,29 @@
+{
+  "aboutUsText": {
+    "title": "Kreatywny zespół dekoratorów",
+    "text": "Młodzi i energiczni, rozwijający działalność w zakresie tworzenia dekoracji na imprezy i wydarzenia"
+  },
+  "contactsText": {
+    "title": "kontakty",
+    "subtitle1": "Confetti - Studio",
+    "span": "Dekoracij Balonami",
+    "subtitle2": "Warszawa",
+    "phoneNumber": "+48 793 351 407",
+    "email": "confettibalony@gmail.com"
+  },
+  "footerText": "confetti © 2023",
+  "heroText": {
+    "title": "Tworzymy unikalne i niepowtarzalne",
+    "span": "dekoracje balonowe",
+    "subtitle": "na imprezy"
+  },
+  "modalText": "confetti",
+  "reviewsText": "Recenzje",
+  "contactFormText": {
+    "email": "E-mail*",
+    "name": "Imię*",
+    "text": "Wiadomość",
+    "send": "Wyślij"
+  },
+  "headerText": "menu"
+}

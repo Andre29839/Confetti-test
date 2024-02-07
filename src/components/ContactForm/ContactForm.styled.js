@@ -129,7 +129,7 @@ export const ContactFormFieldStyled = styled(Field)`
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -1px;
-  color: ${(props) => (props.hasError ? "var(--accent)" : "var(--main)")};
+  color: ${(props) => (props.$hasError ? "var(--accent)" : "var(--main)")};
   font-family: "Inter";
 
   @media (min-width: 768px) {
@@ -146,6 +146,7 @@ export const ContactFormTextArea = styled(ContactFormFieldStyled).attrs({
   as: "textarea",
 })`
   height: 128px;
+  resize: none;
 `;
 
 export const ContactFormError = styled(ErrorMessage)`

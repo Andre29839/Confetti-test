@@ -1,5 +1,13 @@
-import { Formik, useField } from "formik";
-import * as Yup from "yup";
+import { useEffect, useState } from "react";
+import { Formik } from "formik";
+import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+
+import { ContactFormField, ContactFormTextAreas } from "./ContactFormField";
+import { validationSchema } from "@/constantes/validationSchema";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
+import text from "@/text/text.json";
+import { handleChange } from "@/constantes/localStorage";
 
 import svgBallons1 from "../../assets/ballons1.png";
 import svgBallons2 from "../../assets/ballons2.png";
@@ -8,89 +16,121 @@ import {
   ContactFormButton,
   ContactFormContainer,
   ContactFormError,
-  ContactFormFieldStyled,
   ContactFormLabel,
-  ContactFormTextArea,
   StyledImage1,
   StyledImage2,
 } from "./ContactForm.styled";
-import { useEffect, useState } from "react";
 
 export const ContactForm = () => {
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .matches(/^[a-zA-Z\s]*$/, "Nieprawidłowe Іmię")
-      .required("Pole obowiązkowe"),
-    email: Yup.string()
-      .email("Nieprawidłowy email")
-      .required("Pole obowiązkowe"),
-    message: Yup.string().max(
-      250,
-      "Wiadomość nie może zawierać więcej niż 250 znaków"
-    ),
-  });
+  const windowWidth = useWindowWidth();
 
-  const ContactFormField = (props) => {
-    const [field, meta] = useField(props);
-    return (
-      <ContactFormFieldStyled
-        {...field}
-        {...props}
-        hasError={meta.touched && !!meta.error}
-      />
-    );
+  const init = {
+    name: "",
+    email: "",
+    message: "",
   };
 
-  const [windowWidth, setWindowWidth] = useState(null);
+  const [initialValues, setInitialValues] = useState(init);
+
+  const handleSubmit = (_, { resetForm }) => {
+    toast.success("Wiadomość wysłана");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("formValues");
+    }
+    resetForm();
+  };
+
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if (typeof window !== "undefined") {
+      const savedValues = localStorage.getItem("formValues");
+      if (savedValues) {
+        try {
+          setInitialValues(JSON.parse(savedValues));
+        } catch (e) {
+          console.error("Error parsing formValues from localStorage:", e);
+        }
+      }
+    }
   }, []);
 
   return (
     <Formik
-      initialValues={{ name: "", email: "", message: "" }}
+      initialValues={initialValues}
       validationSchema={validationSchema}
       validateOnChange={true}
-      onSubmit={(values, { resetForm }) => {
-        alert(JSON.stringify(values, null, 2));
-        resetForm();
-      }}
+      onSubmit={handleSubmit}
+      enableReinitialize
     >
-      {({ isValid }) => (
+      {({ isValid, setFieldValue }) => (
         <ContactFormContainer>
-          <ContactFormLabel htmlFor="name">Imię*</ContactFormLabel>
-          <ContactFormField name="name" type="text" placeholder="Imię" />
+          <ContactFormLabel htmlFor="name">
+            {text.contactFormText.name}
+          </ContactFormLabel>
+          <ContactFormField
+            name="name"
+            type="text"
+            placeholder="Imię"
+            onChange={(e) =>
+              handleChange(e, {
+                onChange: (e) => setFieldValue("name", e.target.value),
+              })
+            }
+          />
           <ContactFormError name="name" component="div" />
-          <ContactFormLabel htmlFor="email">E-mail*</ContactFormLabel>
+          <ContactFormLabel htmlFor="email">
+            {text.contactFormText.email}
+          </ContactFormLabel>
           <ContactFormField
             name="email"
             type="email"
             placeholder="mail@gmail.com"
+            onChange={(e) =>
+              handleChange(e, {
+                onChange: (e) => setFieldValue("email", e.target.value),
+              })
+            }
           />
           <ContactFormError name="email" component="div" />
-          <ContactFormLabel htmlFor="message">Wiadomość</ContactFormLabel>
-          <ContactFormTextArea
+          <ContactFormLabel htmlFor="message">
+            {text.contactFormText.text}
+          </ContactFormLabel>
+          <ContactFormTextAreas
             name="message"
             as="textarea"
             placeholder="Twoja wiadomość..."
+            onChange={(e) =>
+              handleChange(e, {
+                onChange: (e) => setFieldValue("message", e.target.value),
+              })
+            }
           />
           <ContactFormError name="message" component="div" />
-          <ContactFormButton type="submit" disabled={!isValid}>
-            Wyślij
+          <ContactFormButton
+            type="submit"
+            aria-label="Submit buttom"
+            disabled={!isValid}
+          >
+            {text.contactFormText.send}
           </ContactFormButton>
           {windowWidth >= 768 && (
             <>
-              <StyledImage1 src={svgBallons1} alt="Ballons 1" />
-              <StyledImage2 src={svgBallons2} alt="Ballons 2" />
+              <StyledImage1 src={svgBallons1} alt="Ballons 1" priority />
+              <StyledImage2 src={svgBallons2} alt="Ballons 2" priority />
             </>
           )}
         </ContactFormContainer>
       )}
     </Formik>
   );
+};
+
+ContactForm.propTypes = {
+  initialValues: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    message: PropTypes.string,
+  }),
+  validationSchema: PropTypes.object,
+  validateOnChange: PropTypes.bool,
+  onSubmit: PropTypes.func,
 };

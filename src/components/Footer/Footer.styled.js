@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const FooterContainer = styled.footer`
+export const FooterSection = styled.footer`
+  position: relative;
+  overflow: hidden;
+`;
+
+export const FooterContainer = styled.div`
   position: relative;
   max-width: 480px;
   padding: 32px 20px;

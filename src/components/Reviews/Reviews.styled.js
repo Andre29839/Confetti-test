@@ -11,6 +11,11 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const ReviewsSection = styled.section`
+  position: relative;
+  overflow: hidden;
+`;
+
+export const ReviewsContainer = styled.div`
   padding: 0 20px 80px;
   max-width: 480px;
   margin: 0 auto;
@@ -46,7 +51,7 @@ export const ReviewsTitle = styled.h2`
   }
 `;
 
-export const ReviewsContiner = styled.div`
+export const ReviewsContiner = styled.ul`
   @media (min-width: 1280px) {
     display: flex;
     flex-direction: row;
@@ -60,7 +65,7 @@ export const ReviewsContiner = styled.div`
   }
 `;
 
-export const ReviewsCard = styled.div`
+export const ReviewsCard = styled.li`
   background: var(--extra-accent);
   padding: 24px;
   border-radius: 24px;
@@ -69,6 +74,7 @@ export const ReviewsCard = styled.div`
   display: flex !important;
   flex-direction: column;
   margin-bottom: 36px;
+  outline: none;
 
   @media (min-width: 768px) {
     max-width: 346px;
@@ -119,7 +125,12 @@ export const ReviewsName = styled.p`
   font-weight: 500;
 `;
 
-export const ArrowLeft = styled(Image).attrs({
+const ArrowComponent = ({ src, ...props }) => {
+  const { currentSlide, slideCount, ...otherProps } = props;
+  return <Image src={src} {...otherProps} alt="arrow" />;
+};
+
+export const ArrowLeft = styled(ArrowComponent).attrs({
   src: arrowLeft,
 })`
   width: 56px;
@@ -132,7 +143,7 @@ export const ArrowLeft = styled(Image).attrs({
   left: 285px;
 `;
 
-export const ArrowRight = styled(Image).attrs({
+export const ArrowRight = styled(ArrowComponent).attrs({
   src: arrowRight,
 })`
   width: 56px;
