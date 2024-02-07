@@ -36,6 +36,7 @@ export const ContactForm = () => {
     toast.success("Wiadomość wysłана");
     if (typeof window !== "undefined") {
       localStorage.removeItem("formValues");
+      window.location.reload();
     }
     resetForm();
   };
